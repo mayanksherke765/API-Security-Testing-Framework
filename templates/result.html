@@ -1,0 +1,51 @@
+<div class="box">
+    <h3>Authentication</h3>
+    <p>{{ results.authentication }}</p>
+</div>
+<div class="box">
+    <h3>JWT Token</h3>
+    <p>{{ results.jwt_token }}</p>
+</div>
+<div class="box">
+    <h3>Rate Limiting</h3>
+    <p>{{ results.rate_limiting }}</p>
+</div>
+<div class="headers-section">
+
+    <h2>Security Recommendations</h2>
+
+    <ul>
+        {% for recommendation in results.recommendations %}
+        <li>{{ recommendation }}</li>
+        {% endfor %}
+    </ul>
+
+</div>
+<div class="headers-section">
+
+    <h2>Discovered Sensitive Endpoints</h2>
+
+    {% if results.discovered_endpoints %}
+
+    <ul>
+        {% for endpoint in results.discovered_endpoints %}
+        <li>{{ endpoint }}</li>
+        {% endfor %}
+    </ul>
+
+    {% else %}
+    <p>No Sensitive Endpoints Found</p>
+
+    {% endif %}
+
+</div>
+<a href="/reports/API_Security_Report.pdf"
+   class="back-btn"
+   target="_blank">
+
+    Download PDF Report
+
+</a>
+<a href="/" class="back-btn">
+    Scan Another API
+</a>
